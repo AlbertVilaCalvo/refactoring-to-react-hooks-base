@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "miragejs": "^0.1.40",
+    "prettier": "2.2.1",
     "prop-types": "^15.7.2",
     "time-series-data-generator": "^0.1.5"
   }

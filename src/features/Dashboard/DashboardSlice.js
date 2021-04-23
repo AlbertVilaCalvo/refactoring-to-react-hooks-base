@@ -59,7 +59,7 @@ function fetchDatasetSuccess(payload) {
 }
 
 export function fetchDataset(endpoint) {
-  return function(dispatch) {
+  return function (dispatch) {
     dispatch(fetchDatasetStart());
     return fetch(endpoint)
       .then(response => response.json())
