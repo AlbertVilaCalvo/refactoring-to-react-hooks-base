@@ -1,24 +1,23 @@
 import * as React from "react";
 import PropTypes from "prop-types";
+import { useFetch } from "../../useFetch";
+import Loading from "./Loading";
 
 export function Fetch({ url }) {
-  const [data, setData] = React.useState(null);
+  const result = useFetch(url);
 
-  React.useEffect(() => {
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setData(data);
-      });
-  }, [url]);
+  if (result.loading) {
+    return <Loading />;
+  }
 
-  return data === null ? (
-    <p>No chart selected</p>
-  ) : (
+  if (result.error) {
+    return <p>Error</p>;
+  }
+
+  return (
     <div>
       <ul>
-        {data.map(item => (
+        {result.data.map(item => (
           <li key={item.timestamp}>
             {item.timestamp} - {item.amount}
           </li>
