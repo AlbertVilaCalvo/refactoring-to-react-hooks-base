@@ -30,26 +30,12 @@ export function SelectAndFetch() {
   ];
 
   const [url, setUrl] = React.useState(null);
-  const [data, setData] = React.useState(null);
 
   return (
     <div>
       <p>Please, select a chart</p>
       <Select options={optionsForSelect} onUrlSelected={setUrl} />
-      {url && <Fetch url={url} onDataFetched={setData} />}
-      {data === null ? (
-        <p>No chart selected</p>
-      ) : (
-        <div>
-          <ul>
-            {data.map(item => (
-              <li key={item.timestamp}>
-                {item.timestamp} - {item.amount}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {url && <Fetch url={url} />}
     </div>
   );
 }
