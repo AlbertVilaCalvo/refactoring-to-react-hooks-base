@@ -1,12 +1,12 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 
-export function Select({ options, onUrlSelected }) {
+export function Select({ options, onChange }) {
   return (
     <select
       id="select-product"
       onChange={event => {
-        onUrlSelected(event.target.value);
+        onChange(event);
       }}
     >
       <option value="">--</option>
@@ -26,5 +26,5 @@ Select.propTypes = {
       value: PropTypes.string
     })
   ).isRequired,
-  onUrlSelected: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired
 };
