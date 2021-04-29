@@ -33,8 +33,9 @@ export function SelectAndFetch() {
 
   return (
     <div>
-      <p>Please, select a chart</p>
       <Select
+        id="select-chart"
+        label="Please, select a chart"
         options={optionsForSelect}
         onChange={event => {
           setUrl(event.target.value);

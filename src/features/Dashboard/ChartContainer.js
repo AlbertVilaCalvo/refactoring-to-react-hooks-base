@@ -21,9 +21,9 @@ const ChartContainer = ({ selectedLabel }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return { dataset: state.dataset.data };
-};
+// const mapStateToProps = state => {
+//   return { dataset: state.dataset.data };
+// };
 
 ChartContainer.propTypes = {
   // dataset: PropTypes.array.isRequired,

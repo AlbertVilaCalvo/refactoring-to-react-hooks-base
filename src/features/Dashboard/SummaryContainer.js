@@ -20,12 +20,12 @@ const SummaryContainer = () => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    salesTotal: state.dataset.salesTotal,
-    subscriptionsTotal: state.dataset.subscriptionsTotal
-  };
-};
+// const mapStateToProps = state => {
+//   return {
+//     salesTotal: state.dataset.salesTotal,
+//     subscriptionsTotal: state.dataset.subscriptionsTotal
+//   };
+// };
 
 SummaryContainer.propTypes = {
   // salesTotal: PropTypes.number.isRequired,

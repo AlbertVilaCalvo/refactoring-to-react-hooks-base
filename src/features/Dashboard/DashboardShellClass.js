@@ -7,7 +7,7 @@ import SummaryContainer from "./SummaryContainer";
 import { connect } from "react-redux";
 import { fetchDataset } from "./DashboardSlice";
 
-// This is a backup of the class component version of DashboardShell
+// This is a backup of the original, class component version of DashboardShell
 
 class DashboardShell extends Component {
   constructor(props) {

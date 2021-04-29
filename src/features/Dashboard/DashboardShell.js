@@ -1,4 +1,4 @@
-import React, { Component, useContext } from "react";
+import React from "react";
 import Aside from "../../common/components/Aside";
 import ChartContainer from "./ChartContainer";
 import Layout from "../../common/components/Layout";
@@ -21,39 +21,24 @@ function DashboardShell() {
     setSelectedLabel(selectedLabel);
   };
 
-  const buildSelect = () => {
-    const optionsForSelect = [
-      { label: "Sales", value: `${process.env.REACT_APP_BASE_URL}/sales/` },
-      {
-        label: "Subscriptions",
-        value: `${process.env.REACT_APP_BASE_URL}/subscriptions/`
-      }
-    ];
-
-    return (
-      <>
-        <label htmlFor="select-product">Please select a chart:</label>
-        <div className="field">
-          <Select onChange={handleSelectChange} options={optionsForSelect} />
-          <div className="chevron-wrapper flex">
-            <svg
-              className="chevron"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-            </svg>
-          </div>
-        </div>
-      </>
-    );
-  };
+  const optionsForSelect = [
+    { label: "Sales", value: `${process.env.REACT_APP_BASE_URL}/sales/` },
+    {
+      label: "Subscriptions",
+      value: `${process.env.REACT_APP_BASE_URL}/subscriptions/`
+    }
+  ];
 
   return (
     <Layout>
       <Aside>
         <h2># Polly dashboard</h2>
-        {buildSelect()}
+        <Select
+          id="select-chart"
+          label="Please, select a chart"
+          options={optionsForSelect}
+          onChange={handleSelectChange}
+        />
       </Aside>
       <Main>
         <h1>
@@ -66,9 +51,9 @@ function DashboardShell() {
   );
 }
 
-const mapDispatchToProps = {
-  fetchDataset
-};
+// const mapDispatchToProps = {
+//   fetchDataset
+// };
 
 // export default connect(null, mapDispatchToProps)(DashboardShell);
 export default DashboardShell;

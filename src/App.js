@@ -4,10 +4,11 @@ import DashboardShell from "./features/Dashboard/DashboardShell";
 // import { Provider } from "react-redux";
 // import store from "./store";
 import Context from "./context/context";
+import { sales } from "./mocks";
 
 const initialState = {
   loading: true,
-  data: [],
+  data: sales,
   error: null,
   salesTotal: 0,
   subscriptionsTotal: 0
