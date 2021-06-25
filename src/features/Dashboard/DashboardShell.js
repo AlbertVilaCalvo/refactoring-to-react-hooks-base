@@ -19,6 +19,10 @@ if (process.env.NODE_ENV === "development") {
       this.namespace = process.env.REACT_APP_BASE_URL;
       this.get("/sales/", () => sales);
       this.get("/subscriptions/", () => subscriptions);
+      this.get("/totals/", () => ({
+        salesTotal: 2311,
+        subscriptionsTotal: 381
+      }));
     }
   });
 }

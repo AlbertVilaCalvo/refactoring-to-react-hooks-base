@@ -8,21 +8,27 @@ const SummaryContainer = () => {
   // const {
   //   state: { salesTotal, subscriptionsTotal }
   // } = useContext(Context);
-  const {
-    loading,
-    error,
-    data: { salesTotal, subscriptionsTotal }
-  } = useFetch(`${process.env.REACT_APP_BASE_URL}/totals/`);
+  const { loading, error, data } = useFetch(
+    `${process.env.REACT_APP_BASE_URL}/totals/`
+  );
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <div className="summary flex flex-row">
       <div className="card bg-indigo">
         <p>CellFast sales</p>
-        <p>$ {salesTotal}</p>
+        <p>$ {data.salesTotal}</p>
       </div>
       <div className="card bg-blue">
         <p>CellNow subscriptions</p>
-        <p>$ {subscriptionsTotal}</p>
+        <p>$ {data.subscriptionsTotal}</p>
       </div>
     </div>
   );

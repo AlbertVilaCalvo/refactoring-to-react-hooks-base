@@ -5,9 +5,11 @@ import PropTypes from "prop-types";
 import Context from "../../context/context";
 
 const ChartContainer = ({ selectedLabel }) => {
-  const {
-    state: { data }
-  } = useContext(Context);
+  const { data } = useContext(Context);
+
+  if (data === null) {
+    return null;
+  }
 
   const chartLabels = data.map(dataPoint => dataPoint.timestamp);
   const chartValues = data.map(dataPoint => dataPoint.amount);
