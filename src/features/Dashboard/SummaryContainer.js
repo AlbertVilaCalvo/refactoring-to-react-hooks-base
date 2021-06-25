@@ -2,9 +2,17 @@ import React, { useContext } from "react";
 // import { connect } from "react-redux";
 // import PropTypes from "prop-types";
 import Context from "../../context/context";
+import { useFetch } from "../../useFetch";
 
 const SummaryContainer = () => {
-  const { salesTotal, subscriptionsTotal } = useContext(Context);
+  // const {
+  //   state: { salesTotal, subscriptionsTotal }
+  // } = useContext(Context);
+  const {
+    loading,
+    error,
+    data: { salesTotal, subscriptionsTotal }
+  } = useFetch(`${process.env.REACT_APP_BASE_URL}/totals/`);
 
   return (
     <div className="summary flex flex-row">

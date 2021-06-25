@@ -7,17 +7,46 @@ import SummaryContainer from "./SummaryContainer";
 // import { connect } from "react-redux";
 import { fetchDataset } from "./DashboardSlice";
 import { Select } from "../../common/components/Select";
+import Context from "../../context/context";
+import { sales, subscriptions } from "../../mocks";
 
-function DashboardShell() {
+// Uncomment to mock /api/sales and /api/subscriptions
+if (process.env.NODE_ENV === "development") {
+  const { Server } = require("miragejs");
+  const { sales, subscriptions } = require("../../mocks");
+  new Server({
+    routes() {
+      this.namespace = process.env.REACT_APP_BASE_URL;
+      this.get("/sales/", () => sales);
+      this.get("/subscriptions/", () => subscriptions);
+    }
+  });
+}
+
+function DashboardShell({ fetchDataset }) {
   const [selectedLabel, setSelectedLabel] = React.useState("");
 
-  React.useEffect(() => {
-    fetchDataset(`${process.env.REACT_APP_BASE_URL}/totals/`);
-  }, []);
+  const { setState } = React.useContext(Context);
 
   const handleSelectChange = event => {
-    const selectedLabel = event.target.selectedOptions[0].label;
     fetchDataset(event.target.value);
+    const selectedLabel = event.target.selectedOptions[0].label;
+    /*
+    const url = event.target.value;
+    fetch(url)
+      .then(response => response.json())
+      .then(json => {
+        console.log("response", json);
+        const key = selectedLabel.toLowerCase();
+        const sum = json.map(i => i.amount).reduce((acc, val) => acc + val);
+        setState(currentState => ({
+          ...currentState,
+          data: json,
+          [`${key}Total`]: sum
+        }));
+      })
+      .catch(error => console.error(`error ${url}`, error));
+      */
     setSelectedLabel(selectedLabel);
   };
 

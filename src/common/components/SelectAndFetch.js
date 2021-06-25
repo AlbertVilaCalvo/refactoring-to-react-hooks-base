@@ -8,13 +8,10 @@ import { Server } from "miragejs";
 if (process.env.NODE_ENV === "development") {
   const { Server } = require("miragejs");
   const { sales, subscriptions } = require("../../mocks");
-
   new Server({
     routes() {
       this.namespace = process.env.REACT_APP_BASE_URL;
-
       this.get("/sales/", () => sales);
-
       this.get("/subscriptions/", () => subscriptions);
     }
   });
