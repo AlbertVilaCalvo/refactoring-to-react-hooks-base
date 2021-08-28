@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react-hooks": "^7.0.1",
     "cypress": "^7.6.0",
     "miragejs": "^0.1.40",
     "prettier": "2.2.1",
