@@ -3,6 +3,13 @@ import { render, screen } from "@testing-library/react";
 import { Select } from "./Select";
 import userEvent from "@testing-library/user-event";
 
+// Per veure el test coverage fer: npm test -- --coverage
+// Et crea una carpeta 'coverage'. Podem obrir coverage/lcov-report/index.html
+// Podem configurar el report a package.json:
+// "jest": {
+//    "coverageReporters": ["html"]
+//  }
+
 /*
 test("Use console.log() to display all available methods", () => {
   const component = render(
